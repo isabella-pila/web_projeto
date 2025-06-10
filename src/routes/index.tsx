@@ -1,0 +1,57 @@
+// src/routes/RouteWeb.tsx
+import { Routes, Route, Outlet } from "react-router-dom";
+import { AuthProvider } from "../contexts/AutoContext";
+import { Login } from "../pages/Login";
+import { RegisterPage } from "../pages/Register";
+import { HomePage } from "../pages/HomePage";
+import RecipePage  from "../pages/RecipePage";
+import { NotFoundPage } from "../pages/NotFoundPage";
+import { ProtectedRoute } from "./ProtctedRoute"; // Corrigido o nome do arquivo
+import { SavedRecipes } from "../pages/SaveRecipe";
+import { Footer } from "../components/Footer";
+
+function AppLayout() {
+  return (
+    <AuthProvider> {/* Envolve toda a aplicação com o AuthProvider */}
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </AuthProvider>
+  );
+}
+
+export function RouteWeb() {
+  return (
+    <Routes>
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="recipe/:recipeId" element={<RecipePage />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<RegisterPage />} />
+        
+        {/* Rotas protegidas */}
+        <Route
+          path="receitas-salvas"
+          element={
+            <ProtectedRoute>
+              <SavedRecipes />
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* Exemplo de rota protegida apenas para admin */}
+        <Route
+          path="admin"
+          element={
+            <ProtectedRoute requireAdmin>
+              <div>Página de Administração</div>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
+}
