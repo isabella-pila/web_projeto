@@ -10,9 +10,11 @@ import { ProtectedRoute } from "./ProtctedRoute"; // Corrigido o nome do arquivo
 import { SavedRecipes } from "../pages/SaveRecipe";
 import { Footer } from "../components/Footer";
 
+
 function AppLayout() {
   return (
-    <AuthProvider> {/* Envolve toda a aplicação com o AuthProvider */}
+    <AuthProvider>
+       {/* Você pode remover esse prop se não precisar */}
       <main>
         <Outlet />
       </main>
@@ -20,7 +22,6 @@ function AppLayout() {
     </AuthProvider>
   );
 }
-
 export function RouteWeb() {
   return (
     <Routes>

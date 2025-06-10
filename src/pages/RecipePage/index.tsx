@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { recipes, type IRecipe } from '../../mocks/recipes';
-
 import * as S from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 
 const RecipePage: React.FC = () => {
   const { recipeId } = useParams<{ recipeId: string }>();

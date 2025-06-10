@@ -21,7 +21,8 @@ export function HomePage() {
       <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
         {/* 2. O 'to' do Link corresponde ao 'path' que você definiu no App.tsx */}
        <Header onSearchChange={handleSearchChange} />
-        <Emphasis searchTerm={searchTerm} />
+       
+        <Emphasis searchTerm={searchTerm}  />
 
       </nav>
   );

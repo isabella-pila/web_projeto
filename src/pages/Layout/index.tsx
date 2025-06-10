@@ -1,19 +1,17 @@
 // src/pages/Layout/index.tsx
-import { useState } from "react";
 import { Header } from "../../components/Header";
-import { Emphasis } from "../../components/Emphasis";
+import { Footer } from "../../components/Footer";
 
-export function Layout() {
-  const [searchTerm, setSearchTerm] = useState("");
+interface LayoutProps {
+  children: React.ReactNode;
+}
 
-  function handleSearchChange(value: string) {
-    setSearchTerm(value);
-  }
-
+export function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Header onSearchChange={handleSearchChange} />
-      <Emphasis searchTerm={searchTerm} />
+      <Header />
+      <main>{children}</main>
+      <Footer />
     </>
   );
 }

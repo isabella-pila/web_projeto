@@ -1,5 +1,8 @@
 // src/pages/SavedRecipes.tsx
 
+import { Button } from "../../components/Button";
+import { SEmphasis } from "../../components/Emphasis/styled";
+import { Header } from "../../components/Header";
 import { HighLight } from "../../components/HighLight";
 import { savedRecipesMock } from "../../mocks/savedRecipesMock";
 import { useState } from "react";
@@ -11,32 +14,40 @@ export function SavedRecipes() {
     setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe.id !== id));
   };
 
-  return (
+  return ( <>
+    
     <div>
+      <Header onSearchChange={() => {}} />
+     
+      
       <h1>Receitas Salvas 🐾</h1>
       
       {recipes.length === 0 ? (
         <p className="empty-message">Você ainda não salvou nenhuma receita</p>
       ) : (
         <div>
+          
           {recipes.map((recipe) => (
             <div key={recipe.id} className="recipe-card">
+             
               <HighLight
                 href={`/recipe/${recipe.id}`}
                 title={recipe.title}
                 src={recipe.image}
               />
               
-              <button
+              
+              <Button
                 onClick={() => handleUnsaveRecipe(recipe.id)}
                 className="unsave-button"
               >
                 Remover
-              </button>
+              </Button>
             </div>
           ))}
         </div>
       )}
     </div>
+    </>
   );
 }

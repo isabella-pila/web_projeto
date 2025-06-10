@@ -10,7 +10,7 @@ export const SHeader = styled.header`
   flex-direction: row;
   border-bottom: 0.2rem solid ${colors.primary} ;
   height: 6rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.3rem;
 
    input#menu {
     display: none;
@@ -55,8 +55,7 @@ export const SHeader = styled.header`
 }
 
 @media (max-width: 560px) {
-    
-
+  
     nav {
       div {
         display: none;
